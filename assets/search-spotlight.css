@@ -1,0 +1,33 @@
+.search-spotlight .search-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--color-background), 0.96);
+  z-index: 60;
+  opacity: 0;
+  transform: translateY(-1.2rem);
+}
+
+.search-spotlight details[open] .search-modal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.search-spotlight .modal-overlay { display: none; }
+
+.search-spotlight .search-modal__content {
+  width: min(100rem, 92vw);
+  margin-inline: auto;
+}
+
+.search-spotlight .field__input {
+  font-size: clamp(1.6rem, 1.2rem + 1vw, 2.4rem);
+  padding-block: 1.6rem;
+}
+
+.search-spotlight .predictive-search--header {
+  margin-top: 1.2rem;
+  max-height: 50vh;
+  overflow: auto;
+}
+
