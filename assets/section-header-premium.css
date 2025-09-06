@@ -1,0 +1,81 @@
+.header-wrapper--premium {
+  --overlay-alpha: 0.5;
+}
+
+.header-premium .header__inline-menu .list-menu__item.link {
+  position: relative;
+}
+
+.header-premium .header__inline-menu .list-menu__item.link span {
+  position: relative;
+}
+
+.header-premium .header__inline-menu .list-menu__item.link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.2rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header-premium .header__inline-menu .list-menu__item.link:hover span::after,
+.header-premium .header__inline-menu .list-menu__item.link:focus span::after,
+.header-premium .header__inline-menu .list-menu__item .header__active-menu-item::after {
+  transform: scaleX(1);
+}
+
+/* Scrim shown when mega menu or search overlay open */
+.header-premium .header-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(var(--color-foreground), var(--overlay-alpha));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+
+.header-wrapper--premium.has-overlay .header-scrim {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Enhance default mega panel motion */
+.js .mega-menu__content {
+  will-change: transform, opacity;
+  transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1), transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mega-menu__link {
+  transition: color 160ms ease, text-decoration 160ms ease;
+}
+
+.mega-menu__list > li { /* subtle stagger via animation delay set inline in future */ }
+
+/* Search spotlight full-screen overrides (when used) */
+.search-spotlight .search-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+  padding-top: clamp(5rem, 8vh, 12rem);
+  z-index: 3;
+}
+
+.search-spotlight .search-modal__content {
+  width: min(110rem, 92vw);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .mega-menu__content,
+  .header-premium .header-scrim,
+  .search-spotlight .search-modal {
+    transition: none !important;
+    transform: none !important;
+  }
+}
