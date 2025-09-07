@@ -96,6 +96,66 @@
   }
 {%- endstyle -%}
 
+/* LV-inspired refinements inlined (no new files) */
+<style>
+  /* Layout: reduce padding, steady header height */
+  .section-header .header {
+    min-height: 64px;
+    padding: 0 1.6rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .section-header .header {
+      min-height: 72px;
+      padding: 0 2.4rem;
+    }
+  }
+
+  /* Background: crisp white */
+  .section-header .header-wrapper {
+    background: #fff;
+  }
+
+  /* Logo: centered emphasis with subtle shrink on scroll */
+  .section-header .header__heading-link {
+    padding: 0;
+  }
+  .section-header .header__heading-logo-wrapper {
+    width: clamp(96px, 12vw, 140px);
+    transition: width 0.25s cubic-bezier(0.52, 0, 0.61, 0.99);
+  }
+  .scrolled-past-header .header__heading-logo-wrapper {
+    width: clamp(84px, 10vw, 120px);
+  }
+
+  /* Icons: slightly quieter sizing, keep hit areas */
+  .section-header .header__icon .icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .section-header .header__icon .svg-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Nav type: discreet uppercase with spacing */
+  .section-header .header__menu-item,
+  .section-header .mega-menu__link,
+  .section-header .menu-drawer__menu-item {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .section-header .menu-drawer__menu-item {
+    font-size: 1.4rem;
+  }
+
+  /* Drawer panels: bright white surfaces */
+  .section-header .menu-drawer,
+  .section-header .menu-drawer__submenu {
+    background: #fff;
+  }
+</style>
+
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
